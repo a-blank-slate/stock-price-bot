@@ -25,7 +25,7 @@ print("Connection Done!")
 # Some important variables which will be used later
 bot_id = int(api.me().id_str)
 mention_id = MENTION_ID
-message = "Hi, {}, Current Stock Price of {} is {}"
+message = "Hi, @{}, Current Stock Price of {} is {}"
 retweetMessage = ''
 # The actual bot
 while True:
@@ -48,10 +48,12 @@ while True:
                         print(responseData)
                         data = json.loads(json.dumps(responseData))
                         if 'StockName' in data:
-                            retweetMessage = message.format(mention.author.name, data['StockName'], data['price'])
+                            stockNameObject = data['StockName']
+                            stockPrice = data['price']
+                            retweetMessage = message.format(mention.author.screen_name, stockNameObject, stockPrice)
                         else:
                             retweetMessage = 'Hi, {}, Sorry! No Stock Found'.format(mention.author.name)
-                        api.update_status(message.format(mention.author.screen_name), in_reply_to_status_id=mention.id_str)
+                        api.update_status(retweetMessage, in_reply_to_status_id=mention.id_str)
                         print("Successfully replied!!!  ", retweetMessage)
                     else:
                         print("Server Not Reachable")
@@ -63,3 +65,5 @@ while True:
     else:
         print("Mention ID is not set, closing app.")
         break
+
+        
