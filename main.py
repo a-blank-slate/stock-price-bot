@@ -51,8 +51,7 @@ while True:
                             retweetMessage = message.format(mention.author.name, data['StockName'], data['price'])
                         else:
                             retweetMessage = 'Hi, {}, Sorry! No Stock Found'.format(mention.author.name)
-                        # api.update_status(message.format(mention.author.screen_name),
-                        #                  in_reply_to_status_id=mention.id_str)
+                        api.update_status(message.format(mention.author.screen_name), in_reply_to_status_id=mention.id_str)
                         print("Successfully replied!!!  ", retweetMessage)
                     else:
                         print("Server Not Reachable")
