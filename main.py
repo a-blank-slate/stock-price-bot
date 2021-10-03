@@ -40,6 +40,7 @@ while True:
             if mention.author.id != bot_id:
                 try:
                     stockName = mention.text.replace("@IndianStockBot ", "")
+                    stockName = " ".join(filter(lambda x: x[0] != '@', stockName.split()))
                     url = "https://stock-price-bot.netlify.app/.netlify/functions/stock-price?queryStock=" + stockName
                     print('calling stock api ', url)
                     request = requests.get(url)
@@ -52,7 +53,7 @@ while True:
                             stockPrice = data['price']
                             retweetMessage = message.format(mention.author.screen_name, stockNameObject, stockPrice)
                         else:
-                            retweetMessage = 'Hi, {}, Sorry! No Stock Found'.format(mention.author.name)
+                            retweetMessage = 'Hi, @{}, Sorry! No Stock Found'.format(mention.author.screen_name)
                         api.update_status(retweetMessage, in_reply_to_status_id=mention.id_str)
                         print("Successfully replied!!!  ", retweetMessage)
                     else:
