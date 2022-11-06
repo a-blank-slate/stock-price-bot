@@ -3,3 +3,7 @@ This is a python bot hosted on Amazon EC2, it replies back with the current stoc
 
 
 Twitter credentials can be obtained by creating/re-generating the keys from Twitter Developer Apps.
+
+Bot can be accessed here - https://twitter.com/IndianStockBot
+
+Online 😊
