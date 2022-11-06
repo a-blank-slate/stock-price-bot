@@ -10,6 +10,8 @@ CONSUMER_KEY = environ['CONSUMER_KEY']
 CONSUMER_SECRET = environ['CONSUMER_SECRET']
 ACCESS_KEY = environ['ACCESS_KEY']
 ACCESS_SECRET = environ['ACCESS_SECRET']
+
+# Most Important variable, put the last tweet Id here, so that bot listens the tweet after that ID. you can get it from tweet URL
 MENTION_ID = environ['MENTION_ID']
 
 print("Hello Making the connection with twitter!!")
